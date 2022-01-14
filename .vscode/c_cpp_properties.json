@@ -4,7 +4,10 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**",
-                "F:/Programs/Arduion/hardware/arduino/avr/cores/arduino",
+                "F:/Programs/Arduino/hardware/arduino/avr/cores/arduino",
+                "F:/Programs/Arduino/tools/**",
+                "F:/Programs/Arduino/hardware/arduino/avr/**",
+                "F:/Programs/Arduino/hardware/tools/avr/avr/**",
                 "F:/Programs/Arduino/hardware/arduino/avr/libraries/EEPROM/src",
                 "F:/Programs/Arduino/hardware/arduino/avr/libraries/HID/src",
                 "F:/Programs/Arduino/hardware/arduino/avr/libraries/SoftwareSerial/src",
