@@ -10,7 +10,7 @@
 //              that can be customized.
 //------------------------------------------------------------
 
-#include "Joystick.h"
+#include "..\lib\Joystick.h"
 #include <Arduino.h>
 #include <SPI.h>
 #include <Wire.h>

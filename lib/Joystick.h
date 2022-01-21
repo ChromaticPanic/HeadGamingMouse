@@ -20,6 +20,10 @@
 
 #ifndef JOYSTICK_h
 #define JOYSTICK_h
+#define ARDUINO 10607
+#define USBCON 1
+#define _USING_DYNAMIC_HID 1
+
 
 #include "DynamicHID/DynamicHID.h"
 
