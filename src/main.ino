@@ -13,8 +13,8 @@
 #include <Arduino.h>
 #include <SPI.h>
 #include <Wire.h>
-#include "../lib/Joystick.h"
-#include "../lib/MPU9250.h"
+#include <Joystick.h>
+#include <MPU9250.h>
 
 // Create Joystick
 Joystick_ Joystick;

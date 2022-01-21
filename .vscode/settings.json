@@ -1,3 +1,7 @@
 {
-    "arduino.path": "F:/Programs/Arduino"
+    "arduino.path": "F:/Programs/Arduino",
+    "arduino.commandPath": "F:/Programs/Arduino/arduino-debug.exe",
+    "arduino.logLevel": "verbose",
+    "arduino.skipHeaderProvider": false,
+    "arduino.defaultBaudRate": 115200
 }

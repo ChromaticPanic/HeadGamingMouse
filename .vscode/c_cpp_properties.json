@@ -46,11 +46,12 @@
             ],
             "intelliSenseMode": "gcc-x64",
             "includePath": [
-                "${workspaceFolder}\\lib",
                 "F:\\Programs\\Arduino\\hardware\\arduino\\avr\\cores\\arduino",
                 "F:\\Programs\\Arduino\\hardware\\arduino\\avr\\variants\\micro",
                 "F:\\Programs\\Arduino\\hardware\\arduino\\avr\\libraries\\SPI\\src",
                 "F:\\Programs\\Arduino\\hardware\\arduino\\avr\\libraries\\Wire\\src",
+                "C:\\Users\\Red\\Documents\\Arduino\\libraries\\ArduinoJoystickLibrary-master\\src",
+                "C:\\Users\\Red\\Documents\\Arduino\\libraries\\GY91-MPU9250-BMP280-master",
                 "f:\\programs\\arduino\\hardware\\tools\\avr\\lib\\gcc\\avr\\7.3.0\\include",
                 "f:\\programs\\arduino\\hardware\\tools\\avr\\lib\\gcc\\avr\\7.3.0\\include-fixed",
                 "f:\\programs\\arduino\\hardware\\tools\\avr\\avr\\include"
