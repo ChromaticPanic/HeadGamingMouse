@@ -8,8 +8,9 @@
         {
             "name": "PlatformIO",
             "includePath": [
-                "F:/Uni Files/BMED/HeadGamingMouse/include",
-                "F:/Uni Files/BMED/HeadGamingMouse/src",
+                "f:/Uni Files/BMED/HeadGamingMouse/include",
+                "f:/Uni Files/BMED/HeadGamingMouse/src",
+                "C:/Users/Red/.platformio/packages/framework-arduino-mbed/libraries/USBHID/src",
                 "C:/Users/Red/.platformio/packages/framework-arduino-mbed/cores/arduino",
                 "C:/Users/Red/.platformio/packages/framework-arduino-mbed/cores/arduino/api/deprecated",
                 "C:/Users/Red/.platformio/packages/framework-arduino-mbed/cores/arduino/api/deprecated-avr-comp",
@@ -35,7 +36,6 @@
                 "C:/Users/Red/.platformio/packages/framework-arduino-mbed/libraries/SocketWrapper/src",
                 "C:/Users/Red/.platformio/packages/framework-arduino-mbed/libraries/ThreadDebug/src",
                 "C:/Users/Red/.platformio/packages/framework-arduino-mbed/libraries/USBAudio",
-                "C:/Users/Red/.platformio/packages/framework-arduino-mbed/libraries/USBHID/src",
                 "C:/Users/Red/.platformio/packages/framework-arduino-mbed/libraries/USBHOST/src",
                 "C:/Users/Red/.platformio/packages/framework-arduino-mbed/libraries/USBMSD/src",
                 "C:/Users/Red/.platformio/packages/framework-arduino-mbed/libraries/WiFi/src",
@@ -51,8 +51,9 @@
             "browse": {
                 "limitSymbolsToIncludedHeaders": true,
                 "path": [
-                    "F:/Uni Files/BMED/HeadGamingMouse/include",
-                    "F:/Uni Files/BMED/HeadGamingMouse/src",
+                    "f:/Uni Files/BMED/HeadGamingMouse/include",
+                    "f:/Uni Files/BMED/HeadGamingMouse/src",
+                    "C:/Users/Red/.platformio/packages/framework-arduino-mbed/libraries/USBHID/src",
                     "C:/Users/Red/.platformio/packages/framework-arduino-mbed/cores/arduino",
                     "C:/Users/Red/.platformio/packages/framework-arduino-mbed/cores/arduino/api/deprecated",
                     "C:/Users/Red/.platformio/packages/framework-arduino-mbed/cores/arduino/api/deprecated-avr-comp",
@@ -78,7 +79,6 @@
                     "C:/Users/Red/.platformio/packages/framework-arduino-mbed/libraries/SocketWrapper/src",
                     "C:/Users/Red/.platformio/packages/framework-arduino-mbed/libraries/ThreadDebug/src",
                     "C:/Users/Red/.platformio/packages/framework-arduino-mbed/libraries/USBAudio",
-                    "C:/Users/Red/.platformio/packages/framework-arduino-mbed/libraries/USBHID/src",
                     "C:/Users/Red/.platformio/packages/framework-arduino-mbed/libraries/USBHOST/src",
                     "C:/Users/Red/.platformio/packages/framework-arduino-mbed/libraries/USBMSD/src",
                     "C:/Users/Red/.platformio/packages/framework-arduino-mbed/libraries/WiFi/src",

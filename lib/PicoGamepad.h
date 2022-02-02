@@ -19,6 +19,7 @@
 #define PicoGamepad_H
 
 #include "PluggableUSBHID.h"
+//#include "HID.h"
 #include "platform/Stream.h"
 #include "PlatformMutex.h"
 
