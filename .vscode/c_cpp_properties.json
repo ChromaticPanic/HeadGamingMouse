@@ -10,6 +10,7 @@
             "includePath": [
                 "f:/Uni Files/BMED/HeadGamingMouse/include",
                 "f:/Uni Files/BMED/HeadGamingMouse/src",
+                "C:/Users/Red/.platformio/packages/framework-arduino-mbed/libraries/Wire",
                 "C:/Users/Red/.platformio/packages/framework-arduino-mbed/libraries/SPI",
                 "C:/Users/Red/.platformio/packages/framework-arduino-mbed/libraries/USBHID/src",
                 "C:/Users/Red/.platformio/packages/framework-arduino-mbed/cores/arduino",
@@ -39,7 +40,6 @@
                 "C:/Users/Red/.platformio/packages/framework-arduino-mbed/libraries/USBHOST/src",
                 "C:/Users/Red/.platformio/packages/framework-arduino-mbed/libraries/USBMSD/src",
                 "C:/Users/Red/.platformio/packages/framework-arduino-mbed/libraries/WiFi/src",
-                "C:/Users/Red/.platformio/packages/framework-arduino-mbed/libraries/Wire",
                 "C:/Users/Red/.platformio/packages/framework-arduino-mbed/libraries/doom/src",
                 "C:/Users/Red/.platformio/packages/framework-arduino-mbed/libraries/ea_malloc",
                 "C:/Users/Red/.platformio/packages/framework-arduino-mbed/libraries/mbed-memory-status",
@@ -53,6 +53,7 @@
                 "path": [
                     "f:/Uni Files/BMED/HeadGamingMouse/include",
                     "f:/Uni Files/BMED/HeadGamingMouse/src",
+                    "C:/Users/Red/.platformio/packages/framework-arduino-mbed/libraries/Wire",
                     "C:/Users/Red/.platformio/packages/framework-arduino-mbed/libraries/SPI",
                     "C:/Users/Red/.platformio/packages/framework-arduino-mbed/libraries/USBHID/src",
                     "C:/Users/Red/.platformio/packages/framework-arduino-mbed/cores/arduino",
@@ -82,7 +83,6 @@
                     "C:/Users/Red/.platformio/packages/framework-arduino-mbed/libraries/USBHOST/src",
                     "C:/Users/Red/.platformio/packages/framework-arduino-mbed/libraries/USBMSD/src",
                     "C:/Users/Red/.platformio/packages/framework-arduino-mbed/libraries/WiFi/src",
-                    "C:/Users/Red/.platformio/packages/framework-arduino-mbed/libraries/Wire",
                     "C:/Users/Red/.platformio/packages/framework-arduino-mbed/libraries/doom/src",
                     "C:/Users/Red/.platformio/packages/framework-arduino-mbed/libraries/ea_malloc",
                     "C:/Users/Red/.platformio/packages/framework-arduino-mbed/libraries/mbed-memory-status",
