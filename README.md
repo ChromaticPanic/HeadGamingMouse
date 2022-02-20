@@ -83,7 +83,27 @@ echo mingw32-make %* > C:\VSARM\mingw\mingw32\bin\make.bat
 This creates a wrapper batch file that will call the mingw32-make tool whenever you type make into a Windows terminal. We will update the Windows Path to find all of the tools in mingw32\bin (along with this .bat file) in a later step.  
 
 
-#### Qt5
+#### ArduinoCore mbed
+
+Arduino Core and Mbed OS
+
+Arduino is no stranger to Mbed OS. It’s a hugely important platform and operating system in the IoT space. This is due toits support for Cortex-M microcontrollers and its real-time operating system capabilities. So a lot of work was done when Mbed OS was adopted for the Nano 33 BLE and Nano 33 BLE Sense devices. Since all Mbed infrastructure and drivers were in place, we could easily support all new Arduino boards with minimal effort. Including new ones like the Portenta H7 and Nano RP2040 Connect.
+
+This makes the Arduino Core plug-and-play, and an easy choice for getting your devices up and running quickly. We provide two cores; one for our Nano RP2040 Connect board, and one for other RP2040-based boards, including the Raspberry Pi Pico. As the core is based on Mbed OS you can choose between using Arduino or Mbed’s API.
+
+If you’d like to support any other RP2040 board with its custom features you can do so. It requires very little effort by cloning and tweaking the Arduino Mbed Core.
+Ready for the Nano RP2040 Connect
+
+All Arduino APIs are standardized, which means they can be used on all boards. If you have a sketch for your Nano 33 BLE, you can now upload it to a Nano RP2040 Connect and run it without making any changes.
+
+In effect this means you can create sketches for the new Arduino board, even if you don’t have your hands on it yet. It also makes project upgrades very easy. Nor does the Arduino Core require a custom bootloader for RP2040 devices, as it uses the ROM-based bootloader from Raspberry Pi.
+
+https://github.com/arduino/ArduinoCore-mbed
+
+````
+git clone -b master https://github.com/arduino/ArduinoCore-mbed.git
+````
+
 
 
 #### Command Prompt
