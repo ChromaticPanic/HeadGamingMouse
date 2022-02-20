@@ -32,6 +32,7 @@ Project pre-compiled binaries can be found here: [releases](https://github.com/C
 Building the cpp source requires the following:  
 OS: Win 10 x64  
 Build tools and dependencies:  
+- [ARM build tools](#ARM-build-tools)  
 - [cmake](#cmake)  
 - [mingw](#mingw)  
 - [Qt5](#Qt5) 
@@ -43,7 +44,15 @@ Build tools and dependencies:
 - [Clion Setup](#CLion) *optional*  
  
 
+#### ARM build tools
 
+Install GNU Arm Embedded Toolchain
+
+The GNU Arm Embedded Toolchain contains the Arm GCC compiler that we need to compile C and C++ code for the RP2040.
+
+Head to the [GNU Arm Embedded Toolchain download page](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads) and download the latest installer for Windows. e.g. gcc-arm-none-eabi-10-2020-q4-major-win32.exe.
+
+Run the installer.
 
 #### github desktop
 
