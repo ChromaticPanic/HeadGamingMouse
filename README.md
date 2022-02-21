@@ -13,9 +13,7 @@
 - [windows](#Windows-cpp)
 - [linux](#Linux-cpp)
 
-[Build python source](#Build-python)
-- [windows](#Windows-python)
-- [linux](#Linux-python)
+
 ## Overview
 
 
