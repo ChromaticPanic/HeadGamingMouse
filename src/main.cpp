@@ -1,17 +1,17 @@
-#include <Arduino.h>
-#include "../lib/PicoGamepad.h"
-#include <SPI.h>
-#include <Wire.h>
+//#include <Arduino.h>
+//#include "../lib/PicoGamepad.h"
+//#include <SPI.h>
+//#include <Wire.h>
 
 
 
-PicoGamepad *gamepad = nullptr;
+//PicoGamepad *gamepad = nullptr;
 
 void setup() {
 
   // put your setup code here, to run once:
   // Serial.begin(9600);
-  gamepad = new PicoGamepad();
+  //gamepad = new PicoGamepad();
   
 
 
