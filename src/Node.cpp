@@ -1,7 +1,5 @@
 #include "Node.h"
 
-//using namespace std;
-
 
 /**
  * CLASS: Node
@@ -12,8 +10,8 @@
 
 Node::Node()
 {
-    this->nextNode = NULL;
-    this->item = NULL;
+    this->nextNode = nullptr;
+    this->item = nullptr;
 }
 
 
