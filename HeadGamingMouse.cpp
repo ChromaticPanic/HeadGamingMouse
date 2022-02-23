@@ -1,7 +1,7 @@
 #include "HeadGamingMouse.h"
-#include "PicoGamepad.h"
-#include "GY521.h"
-#include "Arduino.h"
+#include "lib/PicoGamepad.h"
+#include "lib/GY521.h"
+#include <Arduino.h>
 
 /**
  * CLASS: HeadGamingMouse
@@ -25,7 +25,7 @@
  */
 HeadGamingMouse::HeadGamingMouse(){
     
-    this->gamepad = new PicoGamepad(true, 0x1235, 0x0050, 0x0001);
+    this->gamepad = new PicoGamepad();
     this->imu = new GY521();
     this->val =16;
 
