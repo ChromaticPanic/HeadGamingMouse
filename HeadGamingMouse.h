@@ -1,9 +1,12 @@
 #pragma once
+#include <Arduino.h>
+#include <PicoGamepad.h>
+#include <GY521.h>
 
-class GY521;
-class PicoGamepad;
+// class GY521;
+// class PicoGamepad;
 
-using namespace arduino;
+//using namespace arduino;
 
 class HeadGamingMouse {
 
@@ -26,6 +29,7 @@ protected:
 
 public:
     HeadGamingMouse();
+    ~HeadGamingMouse();
     void process();
  
 };

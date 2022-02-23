@@ -8,12 +8,10 @@
 
 
 #include "HeadGamingMouse.h"
-#include "PicoGamepad.h"
-#include "GY521.h"
-#include <Arduino.h>
 
 
-using namespace arduino;
+
+//using namespace arduino;
 
 struct gyrodata {
     float* x;
@@ -44,8 +42,8 @@ struct magdata {
  */
 HeadGamingMouse::HeadGamingMouse(){
     
-    this->gamepad = new PicoGamepad();
-    this->imu = new GY521();
+    this->gamepad = new PicoGamepad;
+    this->imu = new GY521;
     this->val =16;
     this->gyro_delay = 1000;
     this->last_gyro_time = 0;
@@ -53,9 +51,9 @@ HeadGamingMouse::HeadGamingMouse(){
     imu->setThrottle(true);
     imu->setThrottleTime(this->gyro_delay);
 
-    this->gyro = new gyrodata();
-    this->accel = new acceldata();
-    this->mag = new magdata();
+    this->gyro = new struct gyrodata;
+    this->accel = new struct acceldata;
+    this->mag = new struct magdata;
 
     this->gyro->x = new float();
     this->gyro->y = new float();
