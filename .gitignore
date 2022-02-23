@@ -5,3 +5,5 @@
 .vscode/ipch
 .idea
 ARMtools
+cmake-build-debug
+build
