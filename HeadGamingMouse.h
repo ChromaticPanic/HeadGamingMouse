@@ -3,7 +3,7 @@
 class GY521;
 class PicoGamepad;
 
-
+using namespace arduino;
 
 class HeadGamingMouse {
 

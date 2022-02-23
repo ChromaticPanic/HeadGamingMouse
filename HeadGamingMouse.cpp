@@ -8,8 +8,8 @@
 
 
 #include "HeadGamingMouse.h"
-#include "lib/PicoGamepad.h"
-#include "lib/GY521.h"
+#include "PicoGamepad.h"
+#include "GY521.h"
 #include <Arduino.h>
 
 
@@ -18,7 +18,7 @@ using namespace arduino;
 struct gyrodata {
     float* x;
     float* y;
-    float* z;   
+    float* z;
 };
 
 struct acceldata {
@@ -30,7 +30,7 @@ struct acceldata {
 struct magdata {
     float* x;
     float* y;
-    float* z;   
+    float* z;
 };
 
 /**
@@ -98,6 +98,7 @@ void HeadGamingMouse::process(){
 
     cur_time = millis();
 
+    // poll gyroscope within a certain time interval
     if (cur_time - last_gyro_time > gyro_delay) {
         last_gyro_time = cur_time;
 
@@ -115,7 +116,7 @@ void HeadGamingMouse::process(){
 
     }
 
-
+    // pass data to gamepad
     if (data_ready) {
         gamepad->SetRx(*gyro->x);
         gamepad->SetRy(*gyro->y);
