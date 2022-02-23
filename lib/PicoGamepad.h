@@ -75,8 +75,8 @@
 #define HAT_DIR_NW 7
 #define HAT_DIR_C 8
 
-namespace arduino
-{
+using namespace arduino;
+// {
 
     class PicoGamepad : public USBHID
     {
@@ -179,6 +179,6 @@ namespace arduino
         uint8_t _configuration_descriptor[41];
         PlatformMutex _mutex;
     };
-}
+//}
 
 #endif
