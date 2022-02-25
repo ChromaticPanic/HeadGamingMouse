@@ -17,6 +17,7 @@
 */
 
 #include <PicoGamepad.h>
+#include <GY521.h>
 
 struct gyrodata {
     float* x;
@@ -37,6 +38,8 @@ struct magdata {
 };
 
 PicoGamepad gamepad;
+GY521 imu;
+
 
 // 16 bit integer for holding input values
 int val;
@@ -72,6 +75,18 @@ void setup() {
   accel.x = new float();
   accel.y = new float();
   accel.z = new float();
+
+  // Pins
+  const uint sda_pin = 26;
+  const uint scl_pin = 27;
+
+  MbedI2C i2c(sda_pin, scl_pin);
+
+  // Initialize I2C pins
+  gpio_set_function(sda_pin, GPIO_FUNC_I2C);
+  gpio_set_function(scl_pin, GPIO_FUNC_I2C);
+
+  i2c.begin();
 }
 
 void loop() {
@@ -79,23 +94,40 @@ void loop() {
  
   cur_time = millis();
 
-  if (cur_time - last_gyro_time > gyro_delay) {
-        last_gyro_time = cur_time;
+  //if (cur_time - last_gyro_time > gyro_delay) {
+    //    last_gyro_time = cur_time;
 
         //imu->read();
 
-        *accel.x = (float) random(0, 100);
-        *accel.y = (float) random(0, 100);
-        *accel.z = (float) random(0, 100);
+    //    *accel.x = (float) random(0, 100);
+    //    *accel.y = (float) random(0, 100);
+    //    *accel.z = (float) random(0, 100);
 
-        *gyro.x = (float) random(0, 100);
-        *gyro.y = (float) random(0, 100);
-        *gyro.z = (float) random(0, 100);
+    //    *gyro.x = (float) random(0, 100);
+    //    *gyro.y = (float) random(0, 100);
+    //    *gyro.z = (float) random(0, 100);
 
-        data_ready = true;
+    //    data_ready = true;
 
-    }
+    //}
+    // poll gyroscope within a certain time interval
+     if (cur_time - last_gyro_time > gyro_delay) {
+         last_gyro_time = cur_time;
 
+         imu.read();
+
+         *accel.x = imu.getAccelX();
+         *accel.y = imu.getAccelY();
+         *accel.z = imu.getAccelZ();
+
+         *gyro.x = imu.getRoll();
+         *gyro.y = imu.getPitch();
+         *gyro.z = imu.getYaw();
+
+         data_ready = true;
+
+     }
+  
     //pass data to gamepad
     if (data_ready) {
         gamepad.SetRx(*gyro.x);
