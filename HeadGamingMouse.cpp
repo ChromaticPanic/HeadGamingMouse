@@ -44,7 +44,7 @@ HeadGamingMouse::HeadGamingMouse(){
     
     this->gamepad = new PicoGamepad;
     this->imu = new GY521;
-    this->val =16;
+    this->val = 16;
     this->gyro_delay = 1000;
     this->last_gyro_time = 0;
 
