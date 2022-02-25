@@ -119,8 +119,10 @@ void HeadGamingMouse::process(){
         gamepad->SetRx(*gyro->x);
         gamepad->SetRy(*gyro->y);
         gamepad->SetRz(*gyro->z);
+
+        gamepad->send_update();
         data_ready = false;
     }
 
-
+    
 }
