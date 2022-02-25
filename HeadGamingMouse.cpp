@@ -72,7 +72,7 @@ HeadGamingMouse::HeadGamingMouse(){
 
     this->data_ready = false;
 
-    Serial.begin(115200);
+    
 
 }
 
@@ -97,24 +97,42 @@ void HeadGamingMouse::process(){
     cur_time = millis();
 
     // poll gyroscope within a certain time interval
+    // if (cur_time - last_gyro_time > gyro_delay) {
+    //     last_gyro_time = cur_time;
+
+    //     imu->read();
+
+    //     *accel->x = imu->getAccelX();
+    //     *accel->y = imu->getAccelY();
+    //     *accel->z = imu->getAccelZ();
+
+    //     *gyro->x = imu->getRoll();
+    //     *gyro->y = imu->getPitch();
+    //     *gyro->z = imu->getYaw();
+
+    //     data_ready = true;
+
+    // }
+
+    //poll gyroscope within a certain time interval
     if (cur_time - last_gyro_time > gyro_delay) {
         last_gyro_time = cur_time;
 
         imu->read();
 
-        *accel->x = imu->getAccelX();
-        *accel->y = imu->getAccelY();
-        *accel->z = imu->getAccelZ();
+        *accel->x = random(0, 100);
+        *accel->y = random(0, 100);
+        *accel->z = random(0, 100);
 
-        *gyro->x = imu->getRoll();
-        *gyro->y = imu->getPitch();
-        *gyro->z = imu->getYaw();
+        *gyro->x = random(0, 100);
+        *gyro->y = random(0, 100);
+        *gyro->z = random(0, 100);
 
         data_ready = true;
 
     }
 
-    // pass data to gamepad
+    //pass data to gamepad
     if (data_ready) {
         gamepad->SetRx(*gyro->x);
         gamepad->SetRy(*gyro->y);
@@ -124,5 +142,7 @@ void HeadGamingMouse::process(){
         data_ready = false;
     }
 
+    //Serial1.print("Gyro X: ");
+    //Serial1.print(*gyro->x);
     
 }
