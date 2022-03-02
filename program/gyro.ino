@@ -73,8 +73,9 @@ void setup() {
   // Initialize I2C pins
   gpio_set_function(sda_pin, GPIO_FUNC_I2C);
   gpio_set_function(scl_pin, GPIO_FUNC_I2C);
+  gpio_pull_up(sda_pin);
+  gpio_pull_up(scl_pin);
 
-  //i2c.begin();
   imu.begin();
   
 }
@@ -129,9 +130,10 @@ void loop() {
     // }
 
     if (data_ready) {
-        Serial.print(*gyro.x);
-        Serial.print(*gyro.y);
+        Serial.print(*gyro.x + " ");
+        Serial.print(*gyro.y + " ");
         Serial.print(*gyro.z);
+        Serial.println();
 
         //gamepad.send_update();
         data_ready = false;
