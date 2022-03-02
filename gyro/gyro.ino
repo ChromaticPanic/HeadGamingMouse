@@ -43,7 +43,7 @@ struct magdata {
 const uint sda_pin = 20;
 const uint scl_pin = 21;
 
-arduino::MbedI2C* wire = new arduino::MbedI2C( sda_pin, scl_pin );
+arduino::MbedI2C *wire = new arduino::MbedI2C( sda_pin, scl_pin );
 
 //PicoGamepad gamepad;
 GY521 imu( 0x68, wire );
@@ -82,7 +82,7 @@ void setup()
     gpio_pull_up( sda_pin );
     gpio_pull_up( scl_pin );
 
-    if(imu.begin())
+    if ( imu.begin() )
     {
         Serial.println( "Begin: IMU connected" );
     }
@@ -98,22 +98,6 @@ void loop()
 
     cur_time = millis();
 
-    //if (cur_time - last_gyro_time > gyro_delay) {
-      //    last_gyro_time = cur_time;
-
-          //imu->read();
-
-      //    *accel.x = (float) random(0, 100);
-      //    *accel.y = (float) random(0, 100);
-      //    *accel.z = (float) random(0, 100);
-
-      //    *gyro.x = (float) random(0, 100);
-      //    *gyro.y = (float) random(0, 100);
-      //    *gyro.z = (float) random(0, 100);
-
-      //    data_ready = true;
-
-      //}
       // poll gyroscope within a certain time interval
     if ( cur_time - last_gyro_time > gyro_delay )
     {
@@ -132,33 +116,23 @@ void loop()
             *gyro.y = imu.getPitch();
             *gyro.z = imu.getYaw();
 
-            Serial.print("Roll: " + String(*gyro.x));
-            Serial.print(" Pitch: " + String(*gyro.y));
-            Serial.print(" Yaw: " + String(*gyro.z));
-
             data_ready = true;
         }
-        else{
-            Serial.println("Loop: IMU not connected");
+        else
+        {
+            Serial.println( "Loop: IMU not connected" );
         }
 
     }
 
-    //pass data to gamepad
-    // if (data_ready) {
-    //     gamepad.SetRx(*gyro.x);
-    //     gamepad.SetRy(*gyro.y);
-    //     gamepad.SetRz(*gyro.z);
-
-    //     gamepad.send_update();
-    //     data_ready = false;
-    // }
-
     if ( data_ready )
     {
-        Serial.print( String( *gyro.x ) + " " );
-        Serial.print( String( *gyro.y ) + " " );
-        Serial.print( *gyro.z );
+
+
+        Serial.print( "Roll: " + String( *gyro.x ) );
+        Serial.print( " Pitch: " + String( *gyro.y ) );
+        Serial.print( " Yaw: " + String( *gyro.z ) );
+
         Serial.println();
 
         //gamepad.send_update();
