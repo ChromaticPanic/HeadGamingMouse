@@ -40,8 +40,8 @@ struct magdata {
 };
 
 // Pins
-const uint sda_pin = 26;
-const uint scl_pin = 27;
+const uint sda_pin = 20;
+const uint scl_pin = 21;
 
 arduino::MbedI2C* wire = new arduino::MbedI2C( sda_pin, scl_pin );
 
