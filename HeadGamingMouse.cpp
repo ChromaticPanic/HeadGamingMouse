@@ -8,30 +8,15 @@
 
 
 #include "HeadGamingMouse.h"
-//#include <PicoGamepad.h>
-//#include <GY521.h>
 #include <Serial.h>
 
 
- //using namespace arduino;
-
-struct gyrodata {
-    float *x;
-    float *y;
-    float *z;
-};
-
-struct acceldata {
-    float *x;
-    float *y;
-    float *z;
-};
-
-struct magdata {
-    float *x;
-    float *y;
-    float *z;
-};
+HeadGamingMouse::Data::Data()
+{
+    x = 0;
+    y = 0;
+    z = 0;
+}
 
 const uint HeadGamingMouse::sda_pin = 20;
 const uint HeadGamingMouse::scl_pin = 21;
@@ -65,51 +50,14 @@ HeadGamingMouse::HeadGamingMouse()
     this->gyroNoise = 1;
     this->accelNoise = 1;
 
-    this->gyro = new gyrodata;
-    this->accel = new acceldata;
-    //this->mag = new magdata;
-
-    this->gyro->x = new float();
-    this->gyro->y = new float();
-    this->gyro->z = new float();
-
-    this->accel->x = new float();
-    this->accel->y = new float();
-    this->accel->z = new float();
-
-    this->gyroPrev = new gyrodata;
-    this->accelPrev = new acceldata;
-    //this->mag = new magdata;
-
-    this->gyroPrev->x = new float();
-    this->gyroPrev->y = new float();
-    this->gyroPrev->z = new float();
-
-    this->accelPrev->x = new float();
-    this->accelPrev->y = new float();
-    this->accelPrev->z = new float();
-
-    this->gyroDelta = new gyrodata;
-    this->accelDelta = new acceldata;
-
-    this->gyroDelta->x = new float();
-    this->gyroDelta->y = new float();
-    this->gyroDelta->z = new float();
-
-    this->accelDelta->x = new float();
-    this->accelDelta->y = new float();
-    this->accelDelta->z = new float();
-
-    this->gyroZero = new gyrodata;
-    this->accelZero = new acceldata;
-
-    this->gyroZero->x = new float();
-    this->gyroZero->y = new float();
-    this->gyroZero->z = new float();
-
-    this->accelZero->x = new float();
-    this->accelZero->y = new float();
-    this->accelZero->z = new float();
+    this->gyro = new Data;
+    this->accel = new Data;
+    this->gyroPrev = new Data;
+    this->accelPrev = new Data;
+    this->gyroDelta = new Data;
+    this->accelDelta = new Data;
+    this->gyroZero = new Data;
+    this->accelZero = new Data;
 
     //this->mag->x = new float;
     //this->mag->y = new float;
@@ -133,7 +81,11 @@ HeadGamingMouse::~HeadGamingMouse()
     delete this->accelPrev;
     delete this->gyroDelta;
     delete this->accelDelta;
+    delete this->gyroZero;
+    delete this->accelZero;
 }
+
+
 
 /**
  * process
@@ -170,13 +122,13 @@ void HeadGamingMouse::readFromGyro()
     {
         imu->read();
 
-        *accel->x = imu->getAccelX();
-        *accel->y = imu->getAccelY();
-        *accel->z = imu->getAccelZ();
+        accel->x = imu->getAccelX();
+        accel->y = imu->getAccelY();
+        accel->z = imu->getAccelZ();
 
-        *gyro->x = imu->getRoll();
-        *gyro->y = imu->getPitch();
-        *gyro->z = imu->getYaw();
+        gyro->x = imu->getRoll();
+        gyro->y = imu->getPitch();
+        gyro->z = imu->getYaw();
 
         data_ready = true;
     }
@@ -191,15 +143,15 @@ void HeadGamingMouse::readFromGyro()
  */
 void HeadGamingMouse::sendToGamepad()
 {
-    Serial.print( "Roll: " + String( *gyro->x ) );
-    Serial.print( " Pitch: " + String( *gyro->y ) );
-    Serial.print( " Yaw: " + String( *gyro->z ) );
+    Serial.print( "Roll: " + String( gyro->x ) );
+    Serial.print( " Pitch: " + String( gyro->y ) );
+    Serial.print( " Yaw: " + String( gyro->z ) );
 
     Serial.println();
 
-    gamepad->SetRx( *gyro->x );
-    gamepad->SetRy( *gyro->y );
-    gamepad->SetRz( *gyro->z );
+    gamepad->SetRx( gyro->x );
+    gamepad->SetRy( gyro->y );
+    gamepad->SetRz( gyro->z );
 
     gamepad->send_update();
     data_ready = false;
@@ -209,70 +161,70 @@ boolean HeadGamingMouse::calcDelta()
 {
     boolean result = false;
 
-    *gyroDelta->x = *gyro->x - *gyroPrev->x;
-    if(abs(*gyroDelta->x) > gyroNoise)
+    gyroDelta->x = gyro->x - gyroPrev->x;
+    if ( abs( gyroDelta->x ) > gyroNoise )
     {
         result = true;
     }
 
-    if(!result)
+    if ( !result )
     {
-        *gyroDelta->y = *gyro->y - *gyroPrev->y;
-        if(abs(*gyroDelta->y) > gyroNoise)
+        gyroDelta->y = gyro->y - gyroPrev->y;
+        if ( abs( gyroDelta->y ) > gyroNoise )
         {
             result = true;
         }
     }
 
-    if(!result)
+    if ( !result )
     {
-        *gyroDelta->z = *gyro->z - *gyroPrev->z;
-        if(abs(*gyroDelta->z) > gyroNoise)
+        gyroDelta->z = gyro->z - gyroPrev->z;
+        if ( abs( gyroDelta->z ) > gyroNoise )
         {
             result = true;
         }
     }
 
-    if(result)
+    if ( result )
     {
-        *gyroPrev->x = *gyro->x;
-        *gyroPrev->y = *gyro->y;
-        *gyroPrev->z = *gyro->z;
+        gyroPrev->x = gyro->x;
+        gyroPrev->y = gyro->y;
+        gyroPrev->z = gyro->z;
     }
 
-    *accelDelta->x = *accel->x - *accelPrev->x;
-    if(abs(*accelDelta->x) > accelNoise)
+    accelDelta->x = accel->x - accelPrev->x;
+    if ( abs( accelDelta->x ) > accelNoise )
     {
         result = true;
     }
 
-    if(!result)
+    if ( !result )
     {
-        *accelDelta->y = *accel->y - *accelPrev->y;
-        if(abs(*accelDelta->y) > accelNoise)
+        accelDelta->y = accel->y - accelPrev->y;
+        if ( abs( accelDelta->y ) > accelNoise )
         {
             result = true;
         }
     }
 
-    if(!result)
+    if ( !result )
     {
-        *accelDelta->z = *accel->z - *accelPrev->z;
-        if(abs(*accelDelta->z) > accelNoise)
+        accelDelta->z = accel->z - accelPrev->z;
+        if ( abs( accelDelta->z ) > accelNoise )
         {
             result = true;
         }
     }
 
-    if(result)
+    if ( result )
     {
-        *accelPrev->x = *accel->x;
-        *accelPrev->y = *accel->y;
-        *accelPrev->z = *accel->z;
+        accelPrev->x = accel->x;
+        accelPrev->y = accel->y;
+        accelPrev->z = accel->z;
     }
 
     return result;
-   
+
 }
 
 void HeadGamingMouse::calibrate()

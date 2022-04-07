@@ -3,17 +3,12 @@
 #include <PicoGamepad.h>
 #include <GY521.h>
 
-//class GY521;
-//class PicoGamepad;
-
-//using namespace arduino;
-
 class HeadGamingMouse {
 
 private:
     int val;
-    PicoGamepad* gamepad;
-    GY521* imu;
+    PicoGamepad *gamepad;
+    GY521 *imu;
     arduino::MbedI2C *wire;
 
     // Pins
@@ -26,15 +21,15 @@ private:
     uint16_t gyroNoise;
     uint16_t accelNoise;
 
-    struct gyrodata* gyro;
-    struct acceldata* accel;
-    //struct magdata* mag;
-    struct gyrodata* gyroPrev;
-    struct acceldata* accelPrev;
-    struct gyrodata* gyroDelta;
-    struct acceldata* accelDelta;
-    struct gyrodata* gyroZero;
-    struct acceldata* accelZero;
+    class Data;
+    Data *gyro;
+    Data *accel;
+    Data *gyroPrev;
+    Data *accelPrev;
+    Data *gyroDelta;
+    Data *accelDelta;
+    Data *gyroZero;
+    Data *accelZero;
 
     bool data_ready;
 
@@ -43,6 +38,14 @@ private:
     boolean calcDelta();
     void calibrate();
 
+    class Data {
+    public:
+        float x;
+        float y;
+        float z;
+        Data();
+    };
+
 protected:
 
 
@@ -50,5 +53,5 @@ public:
     HeadGamingMouse();
     ~HeadGamingMouse();
     void process();
- 
+
 };
