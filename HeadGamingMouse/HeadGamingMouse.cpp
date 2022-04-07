@@ -8,8 +8,6 @@
 
 
 #include "HeadGamingMouse.h"
- //#include <PicoGamepad.h>
- //#include <GY521.h>
 #include <Serial.h>
 
 
@@ -19,8 +17,6 @@ HeadGamingMouse::Data::Data()
     y = 0;
     z = 0;
 }
-
-//HeadGamingMouse::Data::~Data(){}
 
 const uint HeadGamingMouse::sda_pin = 20;
 const uint HeadGamingMouse::scl_pin = 21;
@@ -85,6 +81,8 @@ HeadGamingMouse::~HeadGamingMouse()
     delete this->accelPrev;
     delete this->gyroDelta;
     delete this->accelDelta;
+    delete this->gyroZero;
+    delete this->accelZero;
 }
 
 

@@ -1,7 +1,7 @@
 #pragma once
 #include <Arduino.h>
-#include <PicoGamepad.h>
-#include <GY521.h>
+#include "PicoGamepad.h"
+#include "GY521.h"
 
 class HeadGamingMouse {
 

@@ -1,12 +1,7 @@
 #pragma once
 #include <Arduino.h>
-#include <PicoGamepad.h>
-#include <GY521.h>
-
-//class GY521;
-//class PicoGamepad;
-
-//using namespace arduino;
+#include "PicoGamepad.h"
+#include "GY521.h"
 
 class HeadGamingMouse {
 
@@ -49,7 +44,6 @@ private:
         float y;
         float z;
         Data();
-        //~Data();
     };
 
 protected:
