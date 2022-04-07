@@ -21,19 +21,7 @@
 #include <Serial.h>
 
 using namespace arduino;
-struct gyrodata {
-    float *x;
-    float *y;
-    float *z;
-};
-
-struct acceldata {
-    float *x;
-    float *y;
-    float *z;
-};
-
-struct magdata {
+struct data {
     float *x;
     float *y;
     float *z;
@@ -43,10 +31,11 @@ struct magdata {
 const uint sda_pin = 20;
 const uint scl_pin = 21;
 
-arduino::MbedI2C *wire = new arduino::MbedI2C( sda_pin, scl_pin );
+arduino::MbedI2C *wire;
 
 //PicoGamepad gamepad;
-GY521 imu( 0x68, wire );
+//GY521 imu( 0x68, wire );
+GY521 *imu;
 
 
 // 16 bit integer for holding input values
@@ -57,23 +46,20 @@ uint16_t last_gyro_time;
 uint16_t cur_time;
 boolean data_ready = false;
 
-struct gyrodata gyro;
-struct acceldata accel;
-struct magdata mag;
+struct data gyro;
 
 void setup()
 {
     Serial.begin( 115200 );
+    wire = new arduino::MbedI2C( sda_pin, scl_pin );
+    //wire->setWireTimeout( 3000, true );
+    imu = new GY521( 0x68, wire );
 
     gyro.x = new float;
     gyro.y = new float;
     gyro.z = new float;
 
-    accel.x = new float;
-    accel.y = new float;
-    accel.z = new float;
-
-    gyro_delay = 2000;
+    gyro_delay = 1000;
     last_gyro_time = 0;
 
     // Initialize I2C pins
@@ -82,7 +68,7 @@ void setup()
     gpio_pull_up( sda_pin );
     gpio_pull_up( scl_pin );
 
-    if ( imu.begin() )
+    if ( imu->begin() )
     {
         Serial.println( "Begin: IMU connected" );
     }
@@ -98,23 +84,34 @@ void loop()
 
     cur_time = millis();
 
-      // poll gyroscope within a certain time interval
+    // poll gyroscope within a certain time interval
     if ( cur_time - last_gyro_time > gyro_delay )
     {
         last_gyro_time = cur_time;
 
-        if ( imu.isConnected() )
+        if ( imu->isConnected() )
         {
-            imu.read();
-
-
-            *accel.x = imu.getAccelX();
-            *accel.y = imu.getAccelY();
-            *accel.z = imu.getAccelZ();
-
-            *gyro.x = imu.getRoll();
-            *gyro.y = imu.getPitch();
-            *gyro.z = imu.getYaw();
+            switch ( imu->read() )
+            {
+            case 0:
+                Serial.println( "Read: Success" );
+                break;
+            case 1:
+                Serial.println( "Read: Throttled" );
+                break;
+            case -1:
+                Serial.println( "Read: Error Read" );
+                break;
+            case -2:
+                Serial.println( "Read: Error Write" );
+                break;
+            case -3:
+                Serial.println( "Read: Error Not Connected" );
+                break;
+            }
+            *gyro.x = imu->getRoll();
+            *gyro.y = imu->getPitch();
+            *gyro.z = imu->getYaw();
 
             data_ready = true;
         }
@@ -122,6 +119,7 @@ void loop()
         {
             Serial.println( "Loop: IMU not connected" );
         }
+        Serial.println("time: " + String(cur_time) );
 
     }
 

@@ -3,10 +3,11 @@
 #include "PicoGamepad.h"
 #include "GY521.h"
 
+#define GYRORANGE 250
+#define ACCELRANGE 2
 class HeadGamingMouse {
 
 private:
-    int val;
     PicoGamepad *gamepad;
     GY521 *imu;
     arduino::MbedI2C *wire;
@@ -20,6 +21,7 @@ private:
     uint16_t cur_time;
     uint16_t gyroNoise;
     uint16_t accelNoise;
+    uint16_t flag;
 
     class Data;
     Data *gyro;
@@ -37,12 +39,13 @@ private:
     void sendToGamepad();
     boolean calcDelta();
     void calibrate();
+    void scaleGyro();
 
     class Data {
     public:
-        float x;
-        float y;
-        float z;
+        uint16_t x;
+        uint16_t y;
+        uint16_t z;
         Data();
     };
 
@@ -50,8 +53,11 @@ protected:
 
 
 public:
+    HeadGamingMouse(PicoGamepad *gamepad);
     HeadGamingMouse();
     ~HeadGamingMouse();
     void process();
+    void demo_gamepad();
+    void demo_imu();
 
 };
