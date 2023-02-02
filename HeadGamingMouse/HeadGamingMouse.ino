@@ -24,15 +24,15 @@ void setup()
 
 void loop()
 {
-  mouse->process();
+  //mouse->process();
 
-  // cur_time = millis();
-  // if ( cur_time - last_gyro_time > gyro_delay )
-  // {
-  //   last_gyro_time = cur_time;
-  //   mouse->demo_imu();
-
-  // }
+  cur_time = millis();
+  if ( cur_time - last_gyro_time > gyro_delay )
+  {
+    last_gyro_time = cur_time;
+    //mouse->demo_imu();
+    mouse->demo_gamepad();
+  }
 
 }
 
